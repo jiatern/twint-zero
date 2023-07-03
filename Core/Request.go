@@ -13,9 +13,9 @@ var (
 )
 
 func Request(Query *string, Instance *string, cursor *string) io.ReadCloser {
-	var url string = fmt.Sprintf("https://%s/search?f=tweet&q=%s", *Instance, *Query)
+	var url string = fmt.Sprintf("http://%s/search?f=tweet&q=%s", *Instance, *Query)
 	if *cursor != "" {
-		url = fmt.Sprintf("https://%s/search%s", *Instance, *cursor)
+		url = fmt.Sprintf("http://%s/search%s", *Instance, *cursor)
 	}
 	hlsCookie := &http.Cookie{
 		Name:   "hlsPlayback",

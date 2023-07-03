@@ -101,7 +101,7 @@ func Scrape(responseBody io.ReadCloser, Instance *string, Format *string, cursor
 			src, exists := s.Attr("src")
 			alt, _ := s.Attr("alt")
 			if exists {
-				src = fmt.Sprintf("https://%s%s", *Instance, src)
+				src = fmt.Sprintf("http://%s%s", *Instance, src)
 				tweet_attachments = append(tweet_attachments, Attachment{
 					Type:    "photo",
 					URL:     &src,
@@ -113,8 +113,8 @@ func Scrape(responseBody io.ReadCloser, Instance *string, Format *string, cursor
 			preview, exists := s.Attr("poster")
 			if exists {
 				src, _ := s.Find("source").Attr("src")
-				preview = fmt.Sprintf("https://%s%s", *Instance, preview)
-				src = fmt.Sprintf("https://%s%s", *Instance, src)
+				preview = fmt.Sprintf("http://%s%s", *Instance, preview)
+				src = fmt.Sprintf("http://%s%s", *Instance, src)
 				tweet_attachments = append(tweet_attachments, Attachment{
 					Type:            "animated_gif",
 					URL:             &src,
@@ -127,8 +127,8 @@ func Scrape(responseBody io.ReadCloser, Instance *string, Format *string, cursor
 			if exists {
 				var ur *string
 				src, exists := s.Attr("data-url")
-				src = fmt.Sprintf("https://%s%s", *Instance, src)
-				preview = fmt.Sprintf("https://%s%s", *Instance, preview)
+				src = fmt.Sprintf("http://%s%s", *Instance, src)
+				preview = fmt.Sprintf("http://%s%s", *Instance, preview)
 				if exists {
 					ur = &src
 				}
